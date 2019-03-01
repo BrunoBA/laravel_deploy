@@ -18,6 +18,6 @@ class ReleaseController extends Controller
         // dd($request->all());
 
         $content = var_export($request->all(), true);
-        Release::create(['payload' => $content]);
+        Release::create(['payload' => $content, 'name' => 'Bruno']);
     }
 }
