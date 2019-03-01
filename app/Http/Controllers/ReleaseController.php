@@ -14,7 +14,6 @@ class ReleaseController extends Controller
 
     public function store(Request $request)
     {
-
         $content = var_export($request->all(), true);
         Release::create(['payload' => $content, 'name' => 'Bruno']);
         exec('sudo git pull');
