@@ -11,8 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::post('release', 'ReleaseController@store');
+Route::get('/', 'ReleaseController@index');
