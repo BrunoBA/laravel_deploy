@@ -17,6 +17,6 @@ class ReleaseController extends Controller
 
         $content = var_export($request->all(), true);
         Release::create(['payload' => $content, 'name' => 'Bruno']);
-        exec('git pull');
+        exec('sudo git pull');
     }
 }
