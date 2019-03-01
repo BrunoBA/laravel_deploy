@@ -16,8 +16,8 @@ class ReleaseController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        
+
         $content = var_export($request->all(), true);
-        Release::create(['name' => $content]);
+        Release::create(['payload' => $content]);
     }
 }
