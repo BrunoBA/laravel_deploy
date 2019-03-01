@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/release', 'ReleaseController@store');
+// Route::post('release', 'ReleaseController@store');
