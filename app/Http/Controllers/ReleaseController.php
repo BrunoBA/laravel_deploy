@@ -16,7 +16,7 @@ class ReleaseController extends Controller
     public function store(Request $request)
     {
 
-        $command = new Command('sudo git pull');
+        $command = new Command('whoiam');
         if ($command->execute()) {
             $content = $command->getOutput();
         } else {
