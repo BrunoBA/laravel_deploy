@@ -15,18 +15,9 @@ class ReleaseController extends Controller
 
     public function store(Request $request)
     {
+        $name = $request->all()['pusher']['name'];
+        $content = var_export($request->all(), true);
 
-        $command = new Command('whoami');
-        if ($command->execute()) {
-            $content = $command->getOutput();
-        } else {
-            $content = $command->getError();
-        }
-
-        $name = "Bruno";
-        // $content = shell_exec('pwd');
-        // $name = "1 - " . $name;
-        // $content = var_export($request->all(), true);
         Release::create(['payload' => $content, 'name' => $name]);
     }
 }

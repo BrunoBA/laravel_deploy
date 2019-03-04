@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Release extends Model
 {
-    protected $fillable = ['name', 'payload'];
+    protected $fillable = ['name', 'payload', 'execution_message'];
 }
