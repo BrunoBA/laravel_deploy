@@ -16,7 +16,7 @@ class ReleaseController extends Controller
     public function store(Request $request)
     {
 
-        $command = new Command('whoiam');
+        $command = new Command('whoami');
         if ($command->execute()) {
             $content = $command->getOutput();
         } else {
