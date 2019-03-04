@@ -15,7 +15,6 @@ class ReleaseController extends Controller
 
     public function store(Request $request)
     {
-        
         $name = $request->all()['pusher']['name'];
         $content = var_export($request->all(), true);
 
