@@ -15,7 +15,7 @@ class ReleaseController extends Controller
     public function store(Request $request)
     {
         $name = "Bruno";
-        $content = shell_exec('git pull');
+        $content = shell_exec('pwd');
         // $name = "1 - " . $name;
         // $content = var_export($request->all(), true);
         Release::create(['payload' => $content, 'name' => $name]);
