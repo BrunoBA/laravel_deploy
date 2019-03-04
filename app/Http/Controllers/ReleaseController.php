@@ -14,9 +14,6 @@ class ReleaseController extends Controller
 
     public function store(Request $request)
     {
-
-
-        
         $name = shell_exec('git pull');
         $name = "1 - " . $name;
         $content = var_export($request->all(), true);
