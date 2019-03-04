@@ -13,9 +13,9 @@ class ReleaseController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $name = exec('git pull');
         $content = var_export($request->all(), true);
-        Release::create(['payload' => $content, 'name' => 'Bruno']);
-        exec('sudo git pull');
+        Release::create(['payload' => $content, 'name' => $name]);
     }
 }
