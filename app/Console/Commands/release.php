@@ -39,14 +39,50 @@ class release extends Command
      */
     public function handle()
     {
+        $releaseDate = date("dmYHis");
         
+        $command = new Exec("cp -r ../laravel_deploy/ ../laravel_deploy_{$releaseDate}/");
+        
+        echo "=========== CREATING THE BACKUP RELEASE \n";
+        if ($command->execute()) {
+            echo "=========== RELEASE CREATED \n";
+            echo $command->getOutput();
+            echo "\n";
+        } else {
+            $content = $command->getError();
+        }
+
+        echo "=========== GIT PULL \n";
         $command = new Exec('git pull');
         if ($command->execute()) {
-            $content = $command->getOutput();
+            echo "=========== GIT PULL (DONE) \n";
+            echo $command->getOutput();
+            echo "\n";
         } else {
             $content = $command->getError();
         }
         
+        echo "=========== NPM INSTALL \n";
+        $command = new Exec("npm install");
+        if ($command->execute()) {
+            echo "=========== NPM INSTALL (DONE) \n";
+            echo $command->getOutput();
+            echo "\n";
+        } else {
+            $content = $command->getError();
+        }
+
+        echo "=========== NPM RUN PRODUCTION \n";
+        $command = new Exec("npm run production");
+        if ($command->execute()) {
+            echo "=========== NPM RUN PRODUCTION (DONE) \n";
+            $content = $command->getOutput();
+            echo $content;
+            echo "\n";
+        } else {
+            $content = $command->getError();
+        }
+
         $affectedRows = Rel::where('released', false)->update(
             [
                 'execution_message' => $content,

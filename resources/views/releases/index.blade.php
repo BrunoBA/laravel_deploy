@@ -64,8 +64,9 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div id="app" class="flex-center position-ref full-height">
             <div class="content">
+                <welcome></welcome>
                 <div class="title m-b-md">
                     ENV: {{ env('APP_ENV') }} 
                 </div>
@@ -80,4 +81,5 @@
             </pre>
         </div>
     </body>
+    <script src="{{asset('js/app.js')}}"></script>
 </html>
