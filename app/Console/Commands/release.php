@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use mikehaertl\shellcommand\Command as Exec;
+use JakubOnderka\PhpConsoleColor\ConsoleColor;
 use App\Release as Rel;
 
 class release extends Command
@@ -66,6 +67,16 @@ class release extends Command
         $command = new Exec("npm install");
         if ($command->execute()) {
             echo "=========== NPM INSTALL (DONE) \n";
+            echo $command->getOutput();
+            echo "\n";
+        } else {
+            $content = $command->getError();
+        }
+
+        echo "=========== COMPOSER INSTALL \n";
+        $command = new Exec("composer install");
+        if ($command->execute()) {
+            echo "=========== COMPOSER INSTALL (DONE) \n";
             echo $command->getOutput();
             echo "\n";
         } else {
